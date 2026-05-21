@@ -1962,7 +1962,7 @@ end;
 function TZPostgreSQLConnection.EncodeBinary(Buf: Pointer;
   Len: Integer; Quoted: Boolean): RawByteString;
 var
-  escapedLen: LongWord;
+  escapedLen: size_t;
   procedure SetResult(escapedBuf: PAnsichar; var Result: RawByteString);
   var P: PAnsiChar;
   begin
