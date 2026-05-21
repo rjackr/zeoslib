@@ -130,6 +130,9 @@ type
   {$IF not declared(PLongBool)}
   PLongBool = ^LongBool;
   {$IFEND}
+  {$IF NOT DECLARED(Psize_t)}
+  Psize_t = ^size_t;
+  {$IFEND}
 
   UInt                  = Cardinal; // See Bugreport #648 for the exact reason
   PUInt                 = ^UInt;
