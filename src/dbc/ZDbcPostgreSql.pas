@@ -58,7 +58,7 @@ interface
 {$IFNDEF ZEOS_DISABLE_POSTGRESQL} //if set we have an empty unit
 uses
   Classes, {$IFDEF MSEgui}mclasses,{$ENDIF} SysUtils,
-  {$IF defined(DELPHI) and defined(MSWINDOWS)}Windows,{$IFEND}
+  {$IFDEF MSWINDOWS}Windows, {$ELSE}Posix.StdDef,{$ENDIF}
   ZDbcIntfs, ZDbcConnection, ZPlainPostgreSqlDriver, ZDbcLogging, ZTokenizer,
   ZGenericSqlAnalyser, ZCompatibility, ZClasses, ZSysUtils, ZExceptions;
 

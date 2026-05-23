@@ -66,7 +66,7 @@ uses
   FmtBCD, Classes, {$IFDEF MSEgui}mclasses,{$ENDIF} SysUtils,
   ZSysUtils, ZDbcIntfs, ZDbcResultSet, ZPlainPostgreSqlDriver, ZDbcLogging,
   ZDbcResultSetMetadata, ZCompatibility, ZDbcCache, ZDbcGenericResolver,
-  ZClasses, ZDbcCachedResultSet, ZDbcPostgreSql, ZExceptions;
+  ZClasses, ZDbcCachedResultSet, ZDbcPostgreSql, ZExceptions{$IFNDEF FPC}{$IFDEF MSWINDOWS}, Windows{$ELSE}, Posix.StdDef{$ENDIF}{$ENDIF};
 
 type
   {** Implements a specialized cached resolver for PostgreSQL. }

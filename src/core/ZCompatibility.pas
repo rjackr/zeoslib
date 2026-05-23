@@ -60,6 +60,8 @@ uses
   {$IFDEF UNIX}
     dynlibs,
   {$endif}
+{$ELSE}
+  {$IFDEF MSWINDOWS}Windows, {$ELSE}Posix.StdDef,{$ENDIF}
 {$ENDIF}
   Classes,
   {$IFDEF MSEgui}mclasses,{$ENDIF}
