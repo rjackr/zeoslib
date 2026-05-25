@@ -132,7 +132,7 @@ type
   {$IF not declared(PLongBool)}
   PLongBool = ^LongBool;
   {$IFEND}
-  {$IFNDEF FPC}{$IF NOT DECLARED(size_t)}size_t = TSize_T;{$IFEND}{$ENDIF} // For older Delphis
+  {$IFNDEF FPC}{$IF NOT DECLARED(size_t)}size_t = Cardinal;{$IFEND}{$ENDIF} // For older Delphis
   {$IF NOT DECLARED(Psize_t)}
   Psize_t = ^size_t;
   {$IFEND}
