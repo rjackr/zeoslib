@@ -133,18 +133,23 @@ type
   PLongBool = ^LongBool;
   {$IFEND}
   {$IFDEF FPC}
-    {$IFDEF WINDOWS}size_t = Cardinal;{$ENDIF}
-    {$IFDEF LINUX}
-      {$IFDEF CPU386}size_t = Cardinal;{$ENDIF}
-      {$IFDEF CPUX64}size_t = UInt64;{$ENDIF}
-    {$ENDIF}
+    {$IF not declared(size_t)}
+      {$IFDEF WINDOWS}
+        size_t = Cardinal;
+      {$ELSE}
+        {$IFDEF CPU64}
+          size_t = QWord;
+        {$ELSE}
+          size_t = Cardinal;
+        {$ENDIF}
+      {$ENDIF}
+    {$IFEND}
   {$ELSE}
     {$IF NOT DECLARED(size_t) AND DECLARED(TSize_T)}size_t = TSize_T;{$ELSE}size_t = Cardinal;{$IFEND} // For older Delphis
   {$ENDIF}
   {$IF NOT DECLARED(Psize_t)}
   Psize_t = ^size_t;
   {$IFEND}
-
   UInt                  = Cardinal; // See Bugreport #648 for the exact reason
   PUInt                 = ^UInt;
   ZPPWideChar           = ^PWideChar;//BCB issue: PPWideChar is not part of system
