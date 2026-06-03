@@ -139,7 +139,7 @@ type
       {$IFDEF CPUX64}size_t = UInt64;{$ENDIF}
     {$ENDIF}
   {$ELSE}
-    {$IF NOT DECLARED(size_t)}size_t = TSize_T;{$IFEND} // For older Delphis
+    {$IF NOT DECLARED(size_t) AND DECLARED(TSize_T)}size_t = TSize_T;{$ELSE}size_t = Cardinal;{$IFEND} // For older Delphis
   {$ENDIF}
   {$IF NOT DECLARED(Psize_t)}
   Psize_t = ^size_t;
