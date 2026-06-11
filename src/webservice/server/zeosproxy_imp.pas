@@ -332,8 +332,14 @@ begin
     end else
       Result := UnicodeString(IntToStr(Statement.GetUpdateCount));
   finally
+    if Assigned(ResultSet) then
+      if not ResultSet.IsClosed
+        then ResultSet.Close;
     ResultSet := nil;
-    Statement := nil;
+    if Assigned(Statement) then
+      if not Statement.IsClosed
+        then Statement.Close;
+    Statement; := nil;
   end;
 end;
 
