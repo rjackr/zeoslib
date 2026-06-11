@@ -339,7 +339,7 @@ begin
     if Assigned(Statement) then
       if not Statement.IsClosed
         then Statement.Close;
-    Statement; := nil;
+    Statement := nil;
   end;
 end;
 
